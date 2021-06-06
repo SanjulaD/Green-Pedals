@@ -20,12 +20,17 @@ import {
 
 import CIcon from '@coreui/icons-react'
 
+import Message from './../../../components/Message/Message'
+import Loader from './../../../components/Loader/Loader'
+
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [loader, setLoader] = useState(false);
 
   function onSubmit(event) {
+    setLoader(true)
     props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {
@@ -37,8 +42,9 @@ const Login = (props) => {
       .catch((error) => {
         setError(error);
       });
+    setLoader(false)
     event.preventDefault();
-    
+
   }
 
   function onChange(event) {
@@ -68,6 +74,10 @@ const Login = (props) => {
                 <CCardBody>
                   <CForm onSubmit={onSubmit}>
                     <h1>Login</h1>
+                    <CRow>
+                      {error && <Message variant='danger'>{error.message}</Message>}
+                      {loader && <Loader />}
+                    </CRow>
                     <p className="text-muted">Sign In to your account</p>
                     <CInputGroup className="mb-3">
                       <CInputGroupPrepend>
@@ -108,16 +118,13 @@ const Login = (props) => {
                         <CButton color="link" className="px-0">Forgot password?</CButton>
                       </CCol>
                     </CRow>
-                    <CRow>
-                      {error && <p>{error.message}</p>}
-                    </CRow>
                   </CForm>
                 </CCardBody>
               </CCard>
               <CCard className="text-white bg-success py-5 d-md-down-none" style={{ width: '44%' }}>
                 <CCardBody className="text-center">
                   <div>
-                    <h2>Green Pedals</h2><br /> 
+                    <h2>Green Pedals</h2><br />
                     <p>
                       Green Pedals is a smart and eco-friendly bicycle lending system to be implemented at NSBM Green University. This system allows the university students to have an affordable ride which will be both enjoyable and efficient.
                     </p>

@@ -7,7 +7,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import './App.css'
 import { icons } from './assets/icons'
 import { Provider } from 'react-redux'
 import store from './store'

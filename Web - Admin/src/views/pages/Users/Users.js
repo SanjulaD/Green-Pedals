@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
+import Loader from './../../../components/Loader/Loader'
 import { AuthUserContext, withAuthorization } from "./../../../Session";
 import { withFirebase } from "./../../../Firebase";
+import { Container } from "react-bootstrap";
 const Users = (props) => {
 
     const [loading, setLoading] = useState(false);
@@ -12,6 +14,8 @@ const Users = (props) => {
     };
     const selectRowProp = {
         mode: "checkbox",
+        clickToSelect: true,
+        bgColor: "rgb(238, 193, 213)"
     };
 
     useEffect(() => {
@@ -60,7 +64,11 @@ const Users = (props) => {
         const user = {
             username: event.username,
             email: event.email,
-            id: event.id
+            id: event.id,
+            faculty: event.faculty,
+            batch: event.batch,
+            degree: event.degree,
+            gender: event.gender,
         };
         props.firebase.store
             .collection("users")
@@ -70,7 +78,6 @@ const Users = (props) => {
                 user.id = users.length;
                 var newUsers = users.slice();
                 newUsers.push(user);
-                console.log(users);
                 setUsers(newUsers);
             });
     }
@@ -78,24 +85,30 @@ const Users = (props) => {
     return (
         <AuthUserContext.Consumer>
             {(authUser) => (
-                <div className="auth-content p-2">
-                    <h1 style={{marginBottom:"20px"}}>User List</h1>
-                    {loading && <div>Loading ...</div>}
+                <Container className="auth-content p-2">
+                    <h1 style={{ marginBottom: "20px" }}>Green Pedals - All Users</h1>
+                    {loading && <Loader />}
                     <BootstrapTable
                         data={users}
                         insertRow={true}
                         deleteRow={true}
                         selectRow={selectRowProp}
                         options={options}
+                        striped
+                        hover
+                        search
                     >
-                        <TableHeaderColumn dataField="id" isKey={true}>
-                            No
-                        </TableHeaderColumn>
-                        <TableHeaderColumn dataField="username">Name</TableHeaderColumn>
+                        <TableHeaderColumn dataField="id" isKey={true} dataSort>NSBM ID</TableHeaderColumn>
+                        <TableHeaderColumn dataField="username" dataSort>Name</TableHeaderColumn>
                         <TableHeaderColumn dataField="email">Email</TableHeaderColumn>
+                        <TableHeaderColumn dataField="faculty">Faculty</TableHeaderColumn>
+                        <TableHeaderColumn dataField="batch">Batch</TableHeaderColumn>
+                        <TableHeaderColumn dataField="degree">Degree</TableHeaderColumn>
+                        <TableHeaderColumn dataField="gender">Gender</TableHeaderColumn>
                     </BootstrapTable>
-                </div>
-            )}
+                </Container>
+            )
+            }
         </AuthUserContext.Consumer>
     );
 }

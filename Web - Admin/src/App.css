@@ -1,0 +1,16 @@
+.c-sidebar-nav {
+    background-color: #2eb85c !important;
+}
+
+.c-sidebar .c-sidebar-brand {
+    background-color: blue;
+}
+
+* {
+    text-decoration: none !important;
+}
+
+.c-sidebar .c-sidebar-nav-link, .c-sidebar .c-sidebar-nav-dropdown-toggle {
+    font-size: 16px;
+    font-weight: 400 !important;
+}

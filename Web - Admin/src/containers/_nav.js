@@ -24,9 +24,21 @@ const _nav =  [
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Settings',
-    to: '/settings',
-    icon: 'cil-settings',
+    name: 'Rides',
+    to: '/Rides',
+    icon: 'cilGraph',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Overview',
+    to: '/Overview',
+    icon: 'cilHome',
+  },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Locations',
+    to: '/Locations',
+    icon: 'cilLocationPin',
   },
   {
     _tag: 'CSidebarNavItem',
