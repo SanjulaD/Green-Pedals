@@ -25,19 +25,19 @@ const _nav =  [
   {
     _tag: 'CSidebarNavItem',
     name: 'Rides',
-    to: '/Rides',
+    to: '/rides',
     icon: 'cilGraph',
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Overview',
-    to: '/Overview',
+    to: '/overview',
     icon: 'cilHome',
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Locations',
-    to: '/Locations',
+    to: '/locations',
     icon: 'cilLocationPin',
   },
   {

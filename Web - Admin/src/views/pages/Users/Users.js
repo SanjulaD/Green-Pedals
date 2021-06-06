@@ -85,8 +85,8 @@ const Users = (props) => {
     return (
         <AuthUserContext.Consumer>
             {(authUser) => (
-                <Container className="auth-content p-2">
-                    <h1 style={{ marginBottom: "20px" }}>Green Pedals - All Users</h1>
+                <Container className="p-2">
+                    <h1 style={{ marginBottom: "40px" }}>Green Pedals - All Users</h1>
                     {loading && <Loader />}
                     <BootstrapTable
                         data={users}
@@ -104,7 +104,7 @@ const Users = (props) => {
                         <TableHeaderColumn dataField="faculty">Faculty</TableHeaderColumn>
                         <TableHeaderColumn dataField="batch">Batch</TableHeaderColumn>
                         <TableHeaderColumn dataField="degree">Degree</TableHeaderColumn>
-                        <TableHeaderColumn dataField="gender">Gender</TableHeaderColumn>
+                        <TableHeaderColumn dataField="gender" dataSort>Gender</TableHeaderColumn>
                     </BootstrapTable>
                 </Container>
             )
