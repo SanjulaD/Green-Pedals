@@ -7,8 +7,8 @@ import {
   CHeaderNav,
   CHeaderNavItem,
   CHeaderNavLink,
+  CImg
 } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
 
 import TheHeaderDropdown from './TheHeaderDropdown'
 
@@ -18,12 +18,12 @@ const TheHeader = () => {
 
   const toggleSidebar = () => {
     const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
-    dispatch({type: 'set', sidebarShow: val})
+    dispatch({ type: 'set', sidebarShow: val })
   }
 
   const toggleSidebarMobile = () => {
     const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive'
-    dispatch({type: 'set', sidebarShow: val})
+    dispatch({ type: 'set', sidebarShow: val })
   }
 
   return (
@@ -39,17 +39,23 @@ const TheHeader = () => {
         onClick={toggleSidebar}
       />
       <CHeaderBrand className="mx-auto d-lg-none" to="/">
-        <CIcon name="logo" height="48" alt="Logo"/>
+        <CImg
+          src="bike.png"
+          alt="logo"
+          fluid
+          style={{ width: "50%", position: "absolute" }}
+          className="c-avatar-img"
+        />
       </CHeaderBrand>
 
       <CHeaderNav className="d-md-down-none mr-auto">
-        <CHeaderNavItem className="px-3" >
+        <CHeaderNavItem className="px-2" >
           <CHeaderNavLink to="/dashboard">Dashboard</CHeaderNavLink>
         </CHeaderNavItem>
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
-        <TheHeaderDropdown/>
+        <TheHeaderDropdown />
       </CHeaderNav>
     </CHeader>
   )

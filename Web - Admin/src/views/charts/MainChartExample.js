@@ -13,11 +13,11 @@ const MainChartExample = attributes => {
     let elements = 27
     const data1 = []
     for (let i = 0; i <= elements; i++) {
-      data1.push(random(50, 200))
+      data1.push(random(2, 10))
     }
     return [
       {
-        label: 'My First dataset',
+        label: 'Bike Count',
         backgroundColor: hexToRgba(brandInfo, 10),
         borderColor: brandInfo,
         pointHoverBackgroundColor: brandInfo,
@@ -42,9 +42,9 @@ const MainChartExample = attributes => {
           yAxes: [{
             ticks: {
               beginAtZero: true,
-              maxTicksLimit: 5,
-              stepSize: Math.ceil(250 / 5),
-              max: 250
+              maxTicksLimit: 10,
+              stepSize: Math.ceil(10 / 5),
+              max: 10
             },
             gridLines: {
               display: true

@@ -9,6 +9,7 @@ import {
   CSidebarNavTitle,
   CSidebarNavDropdown,
   CSidebarNavItem,
+  CImg
 } from '@coreui/react'
 
 // sidebar nav config
@@ -24,7 +25,12 @@ const TheSidebar = () => {
       onShowChange={(val) => dispatch({ type: 'set', sidebarShow: val })}
     >
       <CSidebarBrand className="d-md-down-none" to="/">
-        <h2>Greeen Pedals</h2>
+        <CImg
+          src="bike.png"
+          alt="logo"
+          style={{width: "80%"}}
+          className="c-avatar-img p-4 mr-3"
+        />
       </CSidebarBrand>
       <CSidebarNav>
 

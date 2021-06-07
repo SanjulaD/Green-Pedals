@@ -1,16 +1,30 @@
 .c-sidebar-nav {
-    background-color: #2eb85c !important;
+  background-color: #2eb85c !important;
 }
 
 .c-sidebar .c-sidebar-brand {
-    background-color: blue;
+  background-color: #ffffff !important;
 }
 
 * {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
-.c-sidebar .c-sidebar-nav-link, .c-sidebar .c-sidebar-nav-dropdown-toggle {
-    font-size: 16px;
-    font-weight: 400 !important;
+.c-sidebar .c-sidebar-nav-link,
+.c-sidebar .c-sidebar-nav-dropdown-toggle {
+  font-size: 16px;
+  font-weight: 400 !important;
+}
+
+.stat-card-text {
+    font-size: 28px;
+}
+
+.model-header {
+  display: block !important;
+  padding: 0rem !important;
+}
+
+.c-wrapper:not(.c-wrapper-fluid) .c-header-fixed {
+  height: 90px !important;
 }

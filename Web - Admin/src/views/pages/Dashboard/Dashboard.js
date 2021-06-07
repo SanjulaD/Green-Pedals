@@ -8,25 +8,27 @@ import {
     CRow,
     CCardHeader,
 } from '@coreui/react'
-
+import { withAuthorization } from "./../../../Session";
+import { withFirebase } from "./../../../Firebase";
 import {
     CChartDoughnut,
 } from '@coreui/react-chartjs'
 
 import MainChartExample from '../../charts/MainChartExample.js'
 
-const WidgetsDropdown = lazy(() => import('./../../../widgets/WidgetsDropdown'))
+const StatCards = lazy(() => import('./StatCards.js'))
 
-const Dashboard = (props) => {
+const Dashboard = () => {
     return (
         <>
+            <StatCards />
             <CRow>
                 <CCol md="8">
                     <CCard>
                         <CCardBody>
                             <CRow>
                                 <CCol sm="5">
-                                    <h4 id="traffic" className="card-title mb-2">Session Overview</h4>
+                                    <h4 id="traffic" className="card-title mb-2">Monthly Overview</h4>
                                     <div className="small text-muted">{new Date().toLocaleString() + ''}</div>
                                 </CCol>
                                 <CCol sm="7" className="d-none d-md-block">
@@ -46,7 +48,7 @@ const Dashboard = (props) => {
                                     </CButtonGroup>
                                 </CCol>
                             </CRow>
-                            <MainChartExample style={{ height: '200px', marginTop: '40px' }} />
+                            <MainChartExample style={{ height: '220px', marginTop: '40px' }} />
                         </CCardBody>
                     </CCard>
                 </CCol>
@@ -66,15 +68,15 @@ const Dashboard = (props) => {
                                         data: [40, 80]
                                     }
                                 ]}
-                                labels={['Total Visitors', 'Avearege Time Spent']}
+                                labels={['Total Users', 'Avearege Time Spent']}
                             />
                         </CCardBody>
                     </CCard>
                 </CCol>
             </CRow>
-            <WidgetsDropdown />
         </>
     )
 }
 
-export default Dashboard
+const condition = (authUser) => !!authUser;
+export default withAuthorization(condition)(withFirebase(Dashboard));

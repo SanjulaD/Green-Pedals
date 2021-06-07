@@ -56,6 +56,7 @@ const Rides = (props) => {
                                 itemsPerPage={10}
                                 striped
                                 pagination
+                                hover
                             />
                         </CCardBody>
                     </CCard>
