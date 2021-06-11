@@ -58,7 +58,7 @@ const Map = (props) => {
                                     setSelectedPlace(place)
                                 }}
                                 icon={{
-                                    url: '/bike-cord.png',
+                                    url: '/bike-cord.jpg',
                                     scaledSize: new window.google.maps.Size(50, 50)
                                 }}
                             />

@@ -8,10 +8,12 @@ const Users = (props) => {
 
     const [loading, setLoading] = useState(false);
     const [users, setUsers] = useState([]);
+
     const options = {
         afterDeleteRow: onAfterDeleteRow,
         afterInsertRow: onAfterInsertRow,
     };
+    
     const selectRowProp = {
         mode: "checkbox",
         clickToSelect: true,

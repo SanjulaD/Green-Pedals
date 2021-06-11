@@ -28,12 +28,12 @@ const _nav =  [
     to: '/rides',
     icon: 'cilGraph',
   },
-  // {
-  //   _tag: 'CSidebarNavItem',
-  //   name: 'Overview',
-  //   to: '/overview',
-  //   icon: 'cilHome',
-  // },
+  {
+    _tag: 'CSidebarNavItem',
+    name: 'Docks',
+    to: '/docks',
+    icon: 'cilHome',
+  },
   {
     _tag: 'CSidebarNavItem',
     name: 'Map',
