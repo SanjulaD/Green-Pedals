@@ -15,6 +15,9 @@ const StatCards = (props) => {
     const [loading, setLoading] = useState(false);
     const [users, setUsers] = useState([]);
     const [bikes, setBikes] = useState([]);
+    const [allBikes, setAllBikes] = useState([]);
+    const [countBikes, setCountBIkes] = useState([]);
+    const [countinArray, setcountinArray] = useState("");
 
     useEffect(() => {
         setLoading(true);
@@ -29,9 +32,10 @@ const StatCards = (props) => {
             });
             setUsers(usersList);
             getBikeCount()
+            getAllBikeCount()
             setLoading(false);
         }
-        props.firebase.store.collection("users").get().then(fetchUsers);
+        props.firebase.store.collection("user_details").get().then(fetchUsers);
         return () => {
             props.firebase.users().off();
         };
@@ -49,9 +53,31 @@ const StatCards = (props) => {
                 });
             });
             setBikes(bikeList);
+            
             setLoading(false);
         }
         props.firebase.store.collection("bikeRide").get().then(fetchUsers);
+        return () => {
+            props.firebase.bikeRide().off();
+        };
+    }
+
+    const getAllBikeCount = () => {
+        setLoading(true);
+        function fetchUsers(snapshot) {
+            var bikeAllList = [];
+            snapshot.docs.forEach((doc, i) => {
+                bikeAllList.push({
+                    id: i,
+                    uuid: doc.id,
+                    ...doc.data(),
+                });
+            });
+            setAllBikes(bikeAllList)
+            
+            setLoading(false);
+        }
+        props.firebase.store.collection("docks").get().then(fetchUsers);
         return () => {
             props.firebase.bikeRide().off();
         };
@@ -90,7 +116,7 @@ const StatCards = (props) => {
                             className="stat-card-text"
                             color="gradient-warning"
                             header="Total Bikes"
-                            text="10"
+                            text="50"
                             footerSlot={
                                 <ChartLineSimple
                                     className="mt-3"

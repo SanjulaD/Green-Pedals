@@ -37,7 +37,7 @@ const Rides = (props) => {
         };
     }, [props.firebase]);
 
-    const fields = ['name', 'bikeNumber', 'distance', 'live']
+    const fields = ['studentId', 'bikeNumber', 'distance', 'live']
 
     return (
         <Container>

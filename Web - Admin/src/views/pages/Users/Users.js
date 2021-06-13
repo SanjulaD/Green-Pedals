@@ -34,7 +34,7 @@ const Users = (props) => {
             setUsers(usersList);
             setLoading(false);
         }
-        props.firebase.store.collection("users").get().then(fetchUsers);
+        props.firebase.store.collection("user_details").get().then(fetchUsers);
         return () => {
             props.firebase.users().off();
         };
@@ -42,7 +42,7 @@ const Users = (props) => {
 
     function onAfterDeleteRow(event) {
         event.map((e) => {
-            props.firebase.store.collection("users").doc(users[e].uuid).delete();
+            props.firebase.store.collection("user_details").doc(users[e].uuid).delete();
         });
         setTimeout(() => {
             props.firebase.store
@@ -64,9 +64,10 @@ const Users = (props) => {
 
     function onAfterInsertRow(event) {
         const user = {
-            username: event.username,
+            name: event.name,
             email: event.email,
             id: event.id,
+            phone: event.phone,
         };
         props.firebase.store
             .collection("users")
@@ -97,8 +98,9 @@ const Users = (props) => {
                         search
                     >
                         <TableHeaderColumn dataField="id" isKey={true} dataSort>NSBM ID</TableHeaderColumn>
-                        <TableHeaderColumn dataField="username" dataSort>Name</TableHeaderColumn>
+                        <TableHeaderColumn dataField="name" dataSort>Name</TableHeaderColumn>
                         <TableHeaderColumn dataField="email">Email</TableHeaderColumn>
+                        <TableHeaderColumn dataField="phone">Phone Number</TableHeaderColumn>
                     </BootstrapTable>
                 </Container>
             )

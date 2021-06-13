@@ -18,7 +18,7 @@ const Dock = (props) => {
     const [latitude, setLatitude] = useState("");
     const [longtitude, setLongtitude] = useState("");
     const [availableBikes, setAvailableBikes] = useState("");
-    const [emptyDocks, setEmptyDocks] = useState("");
+    const [dockId, setDockId] = useState("");
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -50,8 +50,8 @@ const Dock = (props) => {
             dockname: dockName,
             lat: latitude,
             long: longtitude,
-            avaBikes: availableBikes,
-            empBikes: emptyDocks,
+            count: availableBikes,
+            Did: dockId,
         };
         props.firebase.store
             .collection("docks")
@@ -76,7 +76,7 @@ const Dock = (props) => {
                         <Col md={2}>
                             <Button className='my-3 success' variant="success" onClick={handleShow}>
                                 <i className='fas fa-plus'></i> ADD DOCK
-                        </Button>
+                            </Button>
                         </Col>
                     </Row>
 
@@ -90,6 +90,16 @@ const Dock = (props) => {
                                 <Form onSubmit={submitHandler}>
                                     <Row>
                                         <Col>
+                                            <Form.Group controlId='dock'>
+                                                <Form.Label>Dock Id</Form.Label>
+                                                <Form.Control
+                                                    required
+                                                    type="dock"
+                                                    placeholder="Enter dock ID"
+                                                    value={dockId}
+                                                    onChange={(e) => setDockId(e.target.value)}
+                                                ></Form.Control>
+                                            </Form.Group>
                                             <Form.Group controlId='dock'>
                                                 <Form.Label>Dock Station Name</Form.Label>
                                                 <Form.Control
@@ -130,16 +140,6 @@ const Dock = (props) => {
                                                     onChange={(e) => setAvailableBikes(e.target.value)}
                                                 ></Form.Control>
                                             </Form.Group>
-                                            <Form.Group controlId='docks'>
-                                                <Form.Label>Empty Docks</Form.Label>
-                                                <Form.Control
-                                                    required
-                                                    type="docks"
-                                                    placeholder="Enter Empty Docks Count"
-                                                    value={emptyDocks}
-                                                    onChange={(e) => setEmptyDocks(e.target.value)}
-                                                ></Form.Control>
-                                            </Form.Group>
                                             <Button type="submit" variant="success">ADD</Button>
                                         </Col>
                                     </Row>
@@ -162,22 +162,22 @@ const Dock = (props) => {
                                 <Table striped bordered hover responsive className='table-lg'>
                                     <thead>
                                         <tr style={{ fontWeight: "bold" }}>
+                                            <th>Dock Id</th>
                                             <th>Dock Name</th>
                                             <th>Latitude</th>
                                             <th>Longtitude</th>
-                                            <th>No. of available bikes</th>
-                                            <th>No. of empty bikes</th>
+                                            <th>Count of bikes</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {
                                             docks.map(docks => (
                                                 <tr key={docks.id}>
+                                                    <td>{docks.Did}</td>
                                                     <td>{docks.dockname}</td>
                                                     <td>{docks.lat}</td>
                                                     <td>{docks.long}</td>
-                                                    <td>{docks.avaBikes}</td>
-                                                    <td>{docks.empBikes}</td>
+                                                    <td>{docks.count}</td>
                                                 </tr>
                                             ))
                                         }

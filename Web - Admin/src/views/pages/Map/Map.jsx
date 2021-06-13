@@ -77,7 +77,7 @@ const Map = (props) => {
                         }}
                     >
                         <div>
-                            <h4 style={{ textAlign: "center" }}>{selectedPlace.name}</h4>
+                            <h4 style={{ textAlign: "center" }}>Student ID : {selectedPlace.studentId}</h4>
                             <p>
                                 Bike Number: <b>{selectedPlace.bikeNumber}</b><br />
                                 Travelled Distance: {selectedPlace.distance}<br />
