@@ -67,10 +67,6 @@ const Users = (props) => {
             username: event.username,
             email: event.email,
             id: event.id,
-            faculty: event.faculty,
-            batch: event.batch,
-            degree: event.degree,
-            gender: event.gender,
         };
         props.firebase.store
             .collection("users")
@@ -103,10 +99,6 @@ const Users = (props) => {
                         <TableHeaderColumn dataField="id" isKey={true} dataSort>NSBM ID</TableHeaderColumn>
                         <TableHeaderColumn dataField="username" dataSort>Name</TableHeaderColumn>
                         <TableHeaderColumn dataField="email">Email</TableHeaderColumn>
-                        <TableHeaderColumn dataField="faculty">Faculty</TableHeaderColumn>
-                        <TableHeaderColumn dataField="batch">Batch</TableHeaderColumn>
-                        <TableHeaderColumn dataField="degree">Degree</TableHeaderColumn>
-                        <TableHeaderColumn dataField="gender" dataSort>Gender</TableHeaderColumn>
                     </BootstrapTable>
                 </Container>
             )
